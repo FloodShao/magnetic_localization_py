@@ -26,13 +26,13 @@ sensorPos = sensorNet.sensorPos()
 
 
 '''Geology magnetic field'''
-data_dir = "../data/Data0206/no_magnet.txt"
+data_dir = "./data/Data0206/no_magnet.txt"
 data = np.loadtxt(data_dir)
 num = int(data.shape[0] / 48)
 data = data.reshape((num, 48))
 Geo_Mag = np.average(data, axis = 0)
 Geo_Mag = sensorNet.sensorValue_world(Geo_Mag)
-sio.savemat("../data/dataMat0206/Geo_Mag.mat", {'data' : Geo_Mag})
+sio.savemat("./data/dataMat0206/Geo_Mag.mat", {'data' : Geo_Mag})
 
 #print(Geo_Mag.reshape((16,3)))
 
@@ -57,14 +57,14 @@ datafile_dir = {
 }
 
 for i in range(16):
-    dir = '../data/Data0206/' + datafile_dir[i] + '.txt'
+    dir = './data/Data0206/' + datafile_dir[i] + '.txt'
     data = np.loadtxt(dir)
     data_num = int(data.shape[0] / 48)
     data = data.reshape((data_num, 48))
     data = sensorNet.sensorValue_world(data)
     '''minus the geology magnetic field'''
     data = data - Geo_Mag
-    matdir = '../data/dataMat0206/' + datafile_dir[i] + '.mat'
+    matdir = './data/dataMat0206/' + datafile_dir[i] + '.mat'
     sio.savemat(matdir, {'data' : data})
 
 
@@ -161,12 +161,12 @@ for i in range(16):
     p_m_actual[i] = magnetPos_from_setup(p_m_original[i])
 
 '''calibration Bt'''
-Idx = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-Idx = [0, 3, 6, 7, 8, 9, 10, 11]
+Idx = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+#Idx = [0, 3, 6, 7, 8, 9, 10, 11]
 #Idx = [12, 13, 14, 15]
-Idx = [7, 8, 9, 10, 11]
-Idx = [0, 3]
-Idx = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+#Idx = [7, 8, 9, 10, 11]
+#Idx = [0, 3]
+#Idx = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 magnetPos = np.vstack((
     p_m_actual[Idx[0]],
@@ -179,8 +179,8 @@ magnetPos = np.vstack((
     p_m_actual[Idx[7]],
     p_m_actual[Idx[8]],
     p_m_actual[Idx[9]],
-    p_m_actual[Idx[10]],
-    p_m_actual[Idx[11]],
+#    p_m_actual[Idx[10]],
+#    p_m_actual[Idx[11]],
 #    p_m_actual[Idx[12]],
 #    p_m_actual[Idx[13]],
 #    p_m_actual[Idx[14]],
@@ -190,22 +190,34 @@ magnetPos = np.vstack((
 
 M_meas = []
 for i in Idx:
-    data = sio.loadmat("../data/dataMat0206/" + datafile_dir[i] + ".mat")['data']
+    data = sio.loadmat("./data/dataMat0206/" + datafile_dir[i] + ".mat")['data']
     '''from n*48 to n*16*3'''
     data = data.reshape((data.shape[0], 16, 3))
     for d in data:
         M_meas += d.tolist()
 M_meas = np.array(M_meas)
 
+"""Calibrate Bt"""
 #print(M_meas)
-Bt0 = 1
+Bt0 = 1e-5
 res = least_squares(BTerror, Bt0, verbose=2, ftol=1e-10, xtol=1e-12, method='lm', args=(sensorPos, magnetPos, M_meas) )
 
-Bt = res.x
-print(Bt)
+Bt = res.x[0]
+print("Bt = ", Bt)
 M_theo = []
 for p in magnetPos:
     M_filed_theo = M_field_value_model(p, sensorPos)
     M_theo.extend(M_filed_theo.tolist())
 M_theo = Bt * 1e7 * np.array(M_theo) #change to 'mG' unit
 #print(M_theo)
+
+
+"""Calibrate sensor position"""
+res = least_squares(SensorPosError, sensorPos.ravel(), verbose=2, ftol=1e-2, xtol=1e-5, method='trf', args=(Bt, magnetPos, M_meas) )
+sensorPos = res.x.reshape( (16,3) )
+
+"""Calibrate sensor rotations"""
+sensor_rotation = np.zeros((48,))
+res = least_squares(SensorOriError, sensor_rotation, verbose=2, ftol = 1e-2, xtol=1e-5, method='trf', args=(Bt, sensorPos, magnetPos, M_meas))
+sensor_rotation = res.x.reshape( (16,3) )
+

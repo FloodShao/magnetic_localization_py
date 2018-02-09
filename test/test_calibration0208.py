@@ -161,12 +161,12 @@ for i in range(16):
     p_m_actual[i] = magnetPos_from_setup(p_m_original[i])
 
 '''calibration Bt'''
-Idx = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-Idx = [0, 3, 6, 7, 8, 9, 10, 11]
+Idx = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+#Idx = [0, 3, 6, 7, 8, 9, 10, 11]
 #Idx = [12, 13, 14, 15]
-Idx = [7, 8, 9, 10, 11]
-Idx = [0, 3]
-Idx = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+#Idx = [7, 8, 9, 10, 11]
+#Idx = [0, 3]
+#Idx = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 magnetPos = np.vstack((
     p_m_actual[Idx[0]],
@@ -179,8 +179,8 @@ magnetPos = np.vstack((
     p_m_actual[Idx[7]],
     p_m_actual[Idx[8]],
     p_m_actual[Idx[9]],
-    p_m_actual[Idx[10]],
-    p_m_actual[Idx[11]],
+#    p_m_actual[Idx[10]],
+#    p_m_actual[Idx[11]],
 #    p_m_actual[Idx[12]],
 #    p_m_actual[Idx[13]],
 #    p_m_actual[Idx[14]],
@@ -197,15 +197,27 @@ for i in Idx:
         M_meas += d.tolist()
 M_meas = np.array(M_meas)
 
+"""Calibrate Bt"""
 #print(M_meas)
-Bt0 = 1
+Bt0 = 1e-5
 res = least_squares(BTerror, Bt0, verbose=2, ftol=1e-10, xtol=1e-12, method='lm', args=(sensorPos, magnetPos, M_meas) )
 
-Bt = res.x
-print(Bt)
+Bt = res.x[0]
+print("Bt = ", Bt)
 M_theo = []
 for p in magnetPos:
     M_filed_theo = M_field_value_model(p, sensorPos)
     M_theo.extend(M_filed_theo.tolist())
 M_theo = Bt * 1e7 * np.array(M_theo) #change to 'mG' unit
 #print(M_theo)
+
+
+"""Calibrate sensor position"""
+res = least_squares(SensorPosError, sensorPos.ravel(), verbose=2, ftol=1e-2, xtol=1e-5, method='trf', args=(Bt, magnetPos, M_meas) )
+sensorPos = res.x.reshape( (16,3) )
+
+"""Calibrate sensor rotations"""
+sensor_rotation = np.zeros((48,))
+res = least_squares(SensorOriError, sensor_rotation, verbose=2, ftol = 1e-2, xtol=1e-5, method='trf', args=(Bt, sensorPos, magnetPos, M_meas))
+sensor_rotation = res.x.reshape( (16,3) )
+
