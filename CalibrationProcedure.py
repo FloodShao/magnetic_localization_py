@@ -22,7 +22,7 @@ for i in range(16):
     sensor = Sensor(i+1, plane, SensorPosition[i+1])
     sensorNet.addSensor(sensor)
 
-sensorPos = sensorNet.sensorPos()
+sensorParam = sensorNet.sensorParam()
 
 
 '''Geology magnetic field'''
@@ -200,6 +200,7 @@ M_meas = np.array(M_meas)
 """Calibrate Bt"""
 #print(M_meas)
 Bt0 = 1e-5
+sensorPos = sensorParam[:, 0:3]
 res = least_squares(BTerror, Bt0, verbose=2, ftol=1e-10, xtol=1e-12, method='lm', args=(sensorPos, magnetPos, M_meas) )
 
 Bt = res.x[0]
@@ -212,12 +213,33 @@ M_theo = Bt * 1e7 * np.array(M_theo) #change to 'mG' unit
 #print(M_theo)
 
 
-"""Calibrate sensor position"""
-res = least_squares(SensorPosError, sensorPos.ravel(), verbose=2, ftol=1e-2, xtol=1e-5, method='trf', args=(Bt, magnetPos, M_meas) )
-sensorPos = res.x.reshape( (16,3) )
-
 """Calibrate sensor rotations"""
-sensor_rotation = np.zeros((48,))
-res = least_squares(SensorOriError, sensor_rotation, verbose=2, ftol = 1e-2, xtol=1e-5, method='trf', args=(Bt, sensorPos, magnetPos, M_meas))
-sensor_rotation = res.x.reshape( (16,3) )
+#sensor_rotation = np.zeros((48,))
+#res = least_squares(SensorOriError, sensor_rotation, verbose=2, ftol = 1e-2, xtol=1e-5, method='trf', args=(Bt, sensorPos, magnetPos, M_meas))
+#sensor_rotation = res.x.reshape( (16,3) )
+
+"""Calibrate sensor position"""
+#res = least_squares(SensorPosError, sensorPos.ravel(), verbose=2, ftol=1e-2, xtol=1e-5, method='trf', args=(Bt, magnetPos, M_meas) )
+#sensorPos = res.x.reshape( (16,3) )
+
+"""Calibrate sensor position and rotations at the same time"""
+res = least_squares(SensorError, sensorParam.ravel(), verbose=2, ftol=1e-2, xtol=1e-5, method='trf', args=(Bt, magnetPos, M_meas))
+sensor_param = res.x.reshape( (16, 6))
+
+'''updata the sensor position and orientation after calibration'''
+for i in range(sensor_param.shape[0]):
+    sp = sensor_param[i]
+    sensorNet.Sensor[i].updateSensor( position=sp[0:3], orientation=sp[3:6])
+
+
+"""save the experimental parameters in mat file"""
+sio.savemat("LabParam0222.mat",
+            {"Bt": Bt,
+             "sensorParam": sensor_param}
+            )
+
+bt = sio.loadmat("LabParam0222.mat")["Bt"]
+print(bt)
+sp = sio.loadmat("LabParam0222.mat")["sensorParam"]
+print(sp)
 

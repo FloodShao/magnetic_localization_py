@@ -56,7 +56,7 @@ class Sensor(object):
             self.position = position
 
         if orientation is None:
-            self.orientation = np.eye(3, dtype=float)
+            self.orientation = np.array([0., 0., 0.])
         else:
             self.orientation = orientation
 
@@ -88,10 +88,10 @@ class SensorNet(object):
         """
         self.Sensor.append(Sensor)
 
-    def sensorPos(self):
+    def sensorParam(self):
         sensor_pos = []
         for s in self.Sensor:
-            sensor_pos.append(s.position.tolist())
+            sensor_pos.append( s.position.tolist() + s.orientation.tolist() )
 
         return np.array(sensor_pos)
 
