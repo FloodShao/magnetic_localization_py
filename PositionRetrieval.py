@@ -9,14 +9,11 @@ from scipy.optimize import minimize
 Bt = sio.loadmat("LabParam0222.mat")['Bt']
 sensorParam = sio.loadmat("LabParam0222.mat")['sensorParam']
 
-Idx = [2]
+Idx = [5]
 
-matdir = "./data/datamat0206/Geo_Mag.mat"
-data_cal = sio.loadmat(matdir)['data']
-#print(data_cal)
 
 for i in Idx:
-    matdir = "./data/datamat0206/" + datafile0206_dir[i] + ".mat"
+    matdir = "./data/datamat0206/aftercal/" + datafile0206_dir[i] + ".mat"
     data = sio.loadmat(matdir)['data']
 #data = data-data_cal
 #print(data)
@@ -51,15 +48,31 @@ for i in range(data.shape[0]):
     #print(res.x)
     '''
 
-    '''minimize 6d'''
 
+    '''minimize 6d simultaneous optimize'''
+    '''
     cons = {
-        'type':'eq',
+        'type': 'eq',
         'fun': MagnetPosError_cons,
         'jac': MagnetPosError_cons_jac
     }
     bounds_6d = ((-190e-3, 190e-3), (-120e-3, 120e-3), (-140e-3, 140e-3), (-1., 1.), (-1., 1.), (-1., 1.))
     opt = {'maxiter': 100, 'disp': False}
+    res_6d = minimize(MagnetPosError_6d, magnetPos6d_init, args=(Bt, sensorParam, data[i]), method='SLSQP',
+                      jac=MagnetPosError_6d_jac, bounds=bounds_6d, constraints=cons, tol=1e-6,
+                      options=opt)
+    print(res_6d.x)
+    '''
+
+
+    '''minimize 6d, first orienttaion next position'''
+    cons = {
+        'type':'eq',
+        'fun': MagnetPosError_cons,
+        'jac': MagnetPosError_cons_jac
+    }
+    bounds_6d = ((-190e-3, 190e-3), (-120e-3, 120e-3), (-140e-3, 140e-3), (None, None), (None, None), (None, None))
+    opt = {'maxiter': 100, 'disp': True}
     res_6d = minimize(MagnetPosError_6d, magnetPos6d_init, args=(Bt, sensorParam, data[i]), method='SLSQP',
                    jac=MagnetPosError_6d_jac_orientation, bounds=bounds_6d, constraints=cons, tol=1e-6,
                    options=opt)
@@ -72,8 +85,7 @@ for i in range(data.shape[0]):
     else:
         magnetPos6d_init = np.array([0., 0., 0., m_opt, n_opt, p_opt])
 
-
-    #print(magnetPos6d_init)
+    print(magnetPos6d_init)
 
     bounds = ([-190e-3, -120e-3, -140e-3, -1., -1., -1.], [190e-3, 120e-3, 140e-3, 1., 1., 1.])
     res_final = least_squares(MagnetPosError_6d, magnetPos6d_init, verbose=0, bounds = bounds,

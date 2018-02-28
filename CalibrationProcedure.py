@@ -62,9 +62,11 @@ for i in range(16):
     data_num = int(data.shape[0] / 48)
     data = data.reshape((data_num, 48))
     data = sensorNet.sensorValue_world(data)
+    matdir = './data/dataMat0206/noncal/' + datafile_dir[i] + '.mat'
+    sio.savemat(matdir, {'data': data})
     '''minus the geology magnetic field'''
     data = data - Geo_Mag
-    matdir = './data/dataMat0206/' + datafile_dir[i] + '.mat'
+    matdir = './data/dataMat0206/aftercal/' + datafile_dir[i] + '.mat'
     sio.savemat(matdir, {'data' : data})
 
 
@@ -190,7 +192,7 @@ magnetPos = np.vstack((
 
 M_meas = []
 for i in Idx:
-    data = sio.loadmat("./data/dataMat0206/" + datafile_dir[i] + ".mat")['data']
+    data = sio.loadmat("./data/dataMat0206/aftercal/" + datafile_dir[i] + ".mat")['data']
     '''from n*48 to n*16*3'''
     data = data.reshape((data.shape[0], 16, 3))
     for d in data:

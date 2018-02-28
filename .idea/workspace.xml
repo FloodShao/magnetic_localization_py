@@ -2,9 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5be76885-1400-40c2-8a28-47dd09495cf4" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/preprocessing.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/CalibrationProcedure.py" afterPath="$PROJECT_DIR$/CalibrationProcedure.py" />
+      <change beforePath="$PROJECT_DIR$/LabParam0222.mat" afterPath="$PROJECT_DIR$/LabParam0222.mat" />
       <change beforePath="$PROJECT_DIR$/PositionRetrieval.py" afterPath="$PROJECT_DIR$/PositionRetrieval.py" />
-      <change beforePath="$PROJECT_DIR$/lib/LS_optimization.py" afterPath="$PROJECT_DIR$/lib/LS_optimization.py" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/1_8_z_-1_(0,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/1_8_z_-1_(90,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/1_8_z_-1_(90,90).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/1_8_z_0_(0,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/1_8_z_0_(90,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/1_8_z_0_(90,90).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/2_24_z_-1_(0,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/2_24_z_0_(0,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/3_24_z_-1_(0,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/3_24_z_0_(0,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/4_24_z_-1_(0,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/4_24_z_0_(0,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/Geo_Mag.mat" afterPath="$PROJECT_DIR$/data/dataMat0206/Geo_Mag.mat" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/cross_z_-1_(90,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/cross_z_-1_(90,90).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/cross_z_0_(90,0).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/data/dataMat0206/cross_z_0_(90,90).mat" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/lib/magnetPosition.py" afterPath="$PROJECT_DIR$/lib/magnetPosition.py" />
+      <change beforePath="$PROJECT_DIR$/lib/sensorPosition.py" afterPath="$PROJECT_DIR$/lib/sensorPosition.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,35 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test_matrix.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_matrix.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="75" column="38" lean-forward="false" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CalibrationProcedure.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CalibrationProcedure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1048">
-              <caret line="223" column="0" lean-forward="false" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
+            <state relative-caret-position="-672">
+              <caret line="187" column="25" lean-forward="false" selection-start-line="187" selection-start-column="25" selection-end-line="187" selection-end-column="25" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -51,25 +48,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PositionRetrieval.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PositionRetrieval.py">
+      <file leaf-file-name="PreProcessingParam.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/PreProcessingParam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1395">
-              <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="228">
+              <caret line="108" column="1" lean-forward="false" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="magnetPosition.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/magnetPosition.py">
+      <file leaf-file-name="preprocessing.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/preprocessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PositionRetrieval.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PositionRetrieval.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="38" lean-forward="false" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,11 +85,9 @@
       <file leaf-file-name="sensorPosition.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/sensorPosition.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1380">
-              <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="19" column="41" lean-forward="false" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,8 +95,8 @@
       <file leaf-file-name="LS_optimization.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/LS_optimization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2282">
-              <caret line="250" column="18" lean-forward="false" selection-start-line="250" selection-start-column="18" selection-end-line="250" selection-end-column="18" />
+            <state relative-caret-position="-1274">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -118,14 +123,15 @@
         <option value="$PROJECT_DIR$/lib/util.py" />
         <option value="$PROJECT_DIR$/test/test_calibration0208.py" />
         <option value="$PROJECT_DIR$/Calibration0208.py" />
-        <option value="$PROJECT_DIR$/lib/sensorPosition.py" />
         <option value="$PROJECT_DIR$/Calibration0209.py" />
-        <option value="$PROJECT_DIR$/CalibrationProcedure.py" />
         <option value="$PROJECT_DIR$/venv/PositionRetrieval.py" />
         <option value="$PROJECT_DIR$/lib/PreProcessingParam.py" />
         <option value="$PROJECT_DIR$/test/test_matrix.py" />
-        <option value="$PROJECT_DIR$/lib/magnetPosition.py" />
         <option value="$PROJECT_DIR$/lib/LS_optimization.py" />
+        <option value="$PROJECT_DIR$/lib/magnetPosition.py" />
+        <option value="$PROJECT_DIR$/preprocessing.py" />
+        <option value="$PROJECT_DIR$/lib/sensorPosition.py" />
+        <option value="$PROJECT_DIR$/CalibrationProcedure.py" />
         <option value="$PROJECT_DIR$/PositionRetrieval.py" />
       </list>
     </option>
@@ -162,6 +168,19 @@
               <item name="magnetic_localization_py" type="b2602c69:ProjectViewProjectNode" />
               <item name="magnetic_localization_py" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magnetic_localization_py" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magnetic_localization_py" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="dataMat0206" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="magnetic_localization_py" type="b2602c69:ProjectViewProjectNode" />
+              <item name="magnetic_localization_py" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="dataMat0206" type="462c0819:PsiDirectoryNode" />
+              <item name="noncal" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="magnetic_localization_py" type="b2602c69:ProjectViewProjectNode" />
@@ -240,6 +259,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="preprocessing" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="magnetic_localization_py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/preprocessing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="test_matrix" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -276,18 +313,20 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.test_readdata0206" />
       <item index="1" class="java.lang.String" itemvalue="Python.Calibration0208" />
       <item index="2" class="java.lang.String" itemvalue="Python.PositionRetrieval" />
       <item index="3" class="java.lang.String" itemvalue="Python.test_matrix" />
+      <item index="4" class="java.lang.String" itemvalue="Python.preprocessing" />
     </list>
     <recent_temporary>
-      <list size="4">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.PositionRetrieval" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test_matrix" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Calibration0208" />
-        <item index="3" class="java.lang.String" itemvalue="Python.test_readdata0206" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Calibration0208" />
+        <item index="2" class="java.lang.String" itemvalue="Python.preprocessing" />
+        <item index="3" class="java.lang.String" itemvalue="Python.test_matrix" />
+        <item index="4" class="java.lang.String" itemvalue="Python.test_readdata0206" />
       </list>
     </recent_temporary>
   </component>
@@ -309,11 +348,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4326241" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4822695" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16453901" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -354,7 +394,7 @@
         <state relative-caret-position="1125">
           <caret line="75" column="38" lean-forward="false" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -374,7 +414,7 @@
         <state relative-caret-position="30">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -384,7 +424,7 @@
         <state relative-caret-position="405">
           <caret line="27" column="52" lean-forward="false" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -393,9 +433,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1380">
           <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -439,7 +477,7 @@
         <state relative-caret-position="390">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -449,7 +487,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -458,9 +496,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -524,16 +560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/sensorPosition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="92" column="29" lean-forward="false" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/test_calibration0208.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
@@ -557,29 +583,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/magneticModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/PreProcessingParam.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="108" column="1" lean-forward="true" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/test_matrix.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
           <caret line="75" column="38" lean-forward="false" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -589,47 +598,97 @@
         <state relative-caret-position="30">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LabParam0222.mat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/planeConf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/magnetPosition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="27" column="52" lean-forward="false" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/magneticModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/LS_optimization.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2282">
-          <caret line="250" column="18" lean-forward="false" selection-start-line="250" selection-start-column="18" selection-end-line="250" selection-end-column="18" />
+        <state relative-caret-position="-1274">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PositionRetrieval.py">
+    <entry file="file://$PROJECT_DIR$/lib/sensorPosition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+        <state relative-caret-position="270">
+          <caret line="19" column="41" lean-forward="false" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/PreProcessingParam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="108" column="1" lean-forward="false" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
           <folding>
-            <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CalibrationProcedure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1048">
-          <caret line="223" column="0" lean-forward="false" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
+        <state relative-caret-position="-672">
+          <caret line="187" column="25" lean-forward="false" selection-start-line="187" selection-start-column="25" selection-end-line="187" selection-end-column="25" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/magnetPosition.py">
+    <entry file="file://$PROJECT_DIR$/PositionRetrieval.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="15" column="38" lean-forward="false" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
