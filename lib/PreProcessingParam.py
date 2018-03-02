@@ -18,6 +18,13 @@ datafile0206_dir = {
     13: 'cross_z_0_(90,90)',
     14: 'cross_z_-1_(90,0)',
     15: 'cross_z_-1_(90,90)',
+    16: '1_8_z_1_(120,0)',
+    17: '2_24_z_0_(90,circle)',
+    18: '2_24_z_1_(120,0)',
+    19: '3_24_z_0_(90,circle)',
+    20: '3_24_z_1_(120,0)',
+    21: '4_24_z_0_(90,circle)',
+    22: '4_24_z_1_(120,0)'
 }
 
 l_1 = 20e-3
@@ -29,9 +36,12 @@ h = 15e-3
 
 delta = 2 * math.pi / 24
 circle_uxy = []
+circle_phi = []
 for i in range(24):
     circle_uxy.append([math.sin(i * delta), math.cos(i * delta)])
+    circle_phi.append([-i * 15])
 circle_uxy = np.array(circle_uxy)
+circle_phi = np.array(circle_phi)
 
 p_xy = {
     '1' : np.array([
@@ -106,4 +116,18 @@ p_m_original = {
     15: np.hstack((p_xy['c_phi90'], -h * np.zeros((p_xy['c_phi90'].shape[0], 1)),
                    90 * np.ones((p_xy['c_phi90'].shape[0], 1)), -90 * np.ones((p_xy['c_phi90'].shape[0], 1)))),
 
+    16: np.hstack((  p_xy['1'],      h*np.ones(( p_xy['1'].shape[0], 1)),  120*np.ones(( p_xy['1'].shape[0], 1)),
+                    np.zeros(( p_xy['1'].shape[0], 1)) )),
+    17: np.hstack((  p_xy['2'],      np.zeros(( p_xy['2'].shape[0], 1)),  90*np.ones(( p_xy['2'].shape[0], 1)),
+                    circle_phi )),
+    18: np.hstack((  p_xy['2'],      h*np.ones(( p_xy['2'].shape[0], 1)),  120*np.ones(( p_xy['2'].shape[0], 1)),
+                    np.zeros(( p_xy['2'].shape[0], 1)) )),
+    19: np.hstack((  p_xy['3'],      np.zeros(( p_xy['3'].shape[0], 1)),  90*np.ones(( p_xy['3'].shape[0], 1)),
+                    circle_phi )),
+    20: np.hstack((  p_xy['3'],      h*np.ones(( p_xy['3'].shape[0], 1)),  120*np.ones(( p_xy['3'].shape[0], 1)),
+                    np.zeros(( p_xy['3'].shape[0], 1)) )),
+    21: np.hstack((  p_xy['4'],      np.zeros(( p_xy['4'].shape[0], 1)),  90*np.ones(( p_xy['4'].shape[0], 1)),
+                    circle_phi )),
+    22: np.hstack((  p_xy['4'],      h*np.ones(( p_xy['4'].shape[0], 1)),  120*np.ones(( p_xy['4'].shape[0], 1)),
+                    np.zeros(( p_xy['4'].shape[0], 1)) )),
 }

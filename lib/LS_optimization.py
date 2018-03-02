@@ -496,7 +496,8 @@ def MagnetPosError_6d_jac_position(magnet_pos_6d, Bt, sensor_param, Measured_dat
 
 
 def MagnetPosError_cons(magnet_pos_6d):
-    return magnet_pos_6d[3]**2 + magnet_pos_6d[4]**2 + magnet_pos_6d[5]**2
+    #satisfied the unit norm constraints
+    return magnet_pos_6d[3]**2 + magnet_pos_6d[4]**2 + magnet_pos_6d[5]**2 - 1
 
 
 def MagnetPosError_cons_jac(magnet_pos_6d):

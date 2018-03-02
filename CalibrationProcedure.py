@@ -6,6 +6,7 @@ from lib.sensorPosition import SensorPosition
 from lib.magnetPosition import magnetPos_from_setup
 import math
 from lib.LS_optimization import *
+import lib.PreProcessingParam
 
 '''Sensors configuration'''
 sensorNet = SensorNet()
@@ -56,7 +57,9 @@ datafile_dir = {
     15: 'cross_z_-1_(90,90)',
 }
 
-for i in range(16):
+datafile_dir = lib.PreProcessingParam.datafile0206_dir
+
+for i in range(23):
     dir = './data/Data0206/' + datafile_dir[i] + '.txt'
     data = np.loadtxt(dir)
     data_num = int(data.shape[0] / 48)
@@ -158,12 +161,16 @@ p_m_original = {
 
 }
 
+p_m_original = lib.PreProcessingParam.p_m_original
+
+print(len(p_m_original))
+
 p_m_actual = {}
-for i in range(16):
+for i in range(23):
     p_m_actual[i] = magnetPos_from_setup(p_m_original[i])
 
 '''calibration Bt'''
-Idx = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Idx = [0,1,2,3,4,5,6,7,8,9]
 #Idx = [0, 3, 6, 7, 8, 9, 10, 11]
 #Idx = [12, 13, 14, 15]
 #Idx = [7, 8, 9, 10, 11]
@@ -192,7 +199,7 @@ magnetPos = np.vstack((
 
 M_meas = []
 for i in Idx:
-    data = sio.loadmat("./data/dataMat0206/aftercal/" + datafile_dir[i] + ".mat")['data']
+    data = sio.loadmat("./data/dataMat0206/noncal/" + datafile_dir[i] + ".mat")['data']
     '''from n*48 to n*16*3'''
     data = data.reshape((data.shape[0], 16, 3))
     for d in data:

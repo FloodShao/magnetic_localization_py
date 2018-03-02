@@ -9,11 +9,10 @@ from scipy.optimize import minimize
 Bt = sio.loadmat("LabParam0222.mat")['Bt']
 sensorParam = sio.loadmat("LabParam0222.mat")['sensorParam']
 
-Idx = [5]
-
+Idx = [18]
 
 for i in Idx:
-    matdir = "./data/datamat0206/aftercal/" + datafile0206_dir[i] + ".mat"
+    matdir = "./data/datamat0206/noncal/" + datafile0206_dir[i] + ".mat"
     data = sio.loadmat(matdir)['data']
 #data = data-data_cal
 #print(data)
@@ -23,7 +22,7 @@ for i in Idx:
 
 
 magnetPos5d_init = np.array([0., 0., 0., 0., 0.])
-magnetPos6d_init = np.array([0., 0., 0., math.sqrt(1/3), math.sqrt(1/3), math.sqrt(1/3)])
+magnetPos6d_init = np.array([0., 0., 0., 0., 0., 1.])
 x_opt, y_opt, z_opt = 0., 0., 0.
 for i in range(data.shape[0]):
 
@@ -71,10 +70,10 @@ for i in range(data.shape[0]):
         'fun': MagnetPosError_cons,
         'jac': MagnetPosError_cons_jac
     }
-    bounds_6d = ((-190e-3, 190e-3), (-120e-3, 120e-3), (-140e-3, 140e-3), (None, None), (None, None), (None, None))
-    opt = {'maxiter': 100, 'disp': True}
+    bounds_6d = ((-190e-3, 190e-3), (-120e-3, 120e-3), (-140e-3, 140e-3), (-1., 1.), (-1., 1.), (-1., 1.))
+    opt = {'maxiter': 500, 'disp': True}
     res_6d = minimize(MagnetPosError_6d, magnetPos6d_init, args=(Bt, sensorParam, data[i]), method='SLSQP',
-                   jac=MagnetPosError_6d_jac_orientation, bounds=bounds_6d, constraints=cons, tol=1e-6,
+                   jac=MagnetPosError_6d_jac_orientation, bounds=bounds_6d, constraints=cons, tol=1e-3,
                    options=opt)
 
     m_opt, n_opt, p_opt = res_6d.x[3], res_6d.x[4], res_6d.x[5]
@@ -87,10 +86,13 @@ for i in range(data.shape[0]):
 
     print(magnetPos6d_init)
 
+
     bounds = ([-190e-3, -120e-3, -140e-3, -1., -1., -1.], [190e-3, 120e-3, 140e-3, 1., 1., 1.])
     res_final = least_squares(MagnetPosError_6d, magnetPos6d_init, verbose=0, bounds = bounds,
                            jac=MagnetPosError_6d_jac, ftol=1e-8, xtol=1e-10, method='trf',
                            args=(Bt, sensorParam, data[i]))
+
+
 
     x_opt, y_opt, z_opt = res_final.x[0], res_final.x[1], res_final.x[2]
     print("optimization results")
